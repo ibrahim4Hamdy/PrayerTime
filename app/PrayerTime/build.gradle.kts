@@ -37,25 +37,9 @@ afterEvaluate{
                 groupId = "bemo.prayer.time"
                 artifactId = "prayer"
                 version = "1.0.8-alpha"
-                from(project.components.findByName("release"))
+                from(project.components.findByName("java"))
                 artifact("$buildDir/outputs/aar/PrayerTime-release.aar")
 
-                pom{
-                    licenses {
-                        license {
-                            name.set("The Apache License, Version 2.0")
-                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
-                        }
-                    }
-                    developers {
-                        developer {
-                            id.set("Ibrahim4Hamdy")
-                            name.set("Ibrahim Hamdy Elfoly")
-                            email.set("ibrahembemo2040@gamil.com")
-                        }
-                    }
-
-                }
             }
         }
         repositories {
