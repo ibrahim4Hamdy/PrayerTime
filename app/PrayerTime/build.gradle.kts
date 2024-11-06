@@ -30,49 +30,52 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
 }
+afterEvaluate{
+    publishing {
+        publications {
+            register<MavenPublication>("release") {
+                groupId = "bemo.prayer.time"
+                artifactId = "prayer"
+                version = "1.0.8-alpha"
+                from(project.components.findByName("release"))
+                artifact("$buildDir/outputs/aar/PrayerTime-release.aar")
 
-publishing {
-    publications {
-        register<MavenPublication>("release") {
-            groupId = "bemo.prayer.time"
-            artifactId = "prayer"
-            version = "1.0.8-alpha"
-            from(project.components.findByName("java"))
-            artifact("$buildDir/outputs/aar/PrayerTime-release.aar")
-
-            pom{
-                licenses {
-                    license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                pom{
+                    licenses {
+                        license {
+                            name.set("The Apache License, Version 2.0")
+                            url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        }
                     }
+                    developers {
+                        developer {
+                            id.set("Ibrahim4Hamdy")
+                            name.set("Ibrahim Hamdy Elfoly")
+                            email.set("ibrahembemo2040@gamil.com")
+                        }
+                    }
+
                 }
-                developers {
-                    developer {
-                        id.set("Ibrahim4Hamdy")
-                        name.set("Ibrahim Hamdy Elfoly")
-                        email.set("ibrahembemo2040@gamil.com")
-                    }
+            }
+        }
+        repositories {
+            maven {
+
+                url = uri("https://maven.pkg.github.com/ibrahim4Hamdy/PrayerTime")
+                name = "PrayerTime" // هذا يسمح بتحديد اسم المستودع
+                credentials{
+
+                    username = project.findProperty("mavenUsername") as String?
+                    password = project.findProperty("mavenPassword") as String?
+
                 }
 
             }
-        }
-    }
-    repositories {
-        maven {
-
-            url = uri("https://maven.pkg.github.com/ibrahim4Hamdy/PrayerTime")
-            name = "PrayerTime" // هذا يسمح بتحديد اسم المستودع
-            credentials{
-
-                username = project.findProperty("mavenUsername") as String?
-                password = project.findProperty("mavenPassword") as String?
-
-            }
 
         }
-
     }
+
+
 }
 
 
