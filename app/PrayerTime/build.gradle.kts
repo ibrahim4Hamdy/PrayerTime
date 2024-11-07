@@ -38,7 +38,6 @@ afterEvaluate{
                 artifactId = "prayer"
                 version = "1.0.8-alpha"
                 from(project.components.findByName("java"))
-                artifact("$buildDir/outputs/aar/PrayerTime-release.aar")
 
             }
         }
